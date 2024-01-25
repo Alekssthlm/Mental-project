@@ -3,24 +3,18 @@ import Navbar from "../components/Navbar";
 import AppContainer from "../components/AppContainer";
 
 export default function SiteWrap() {
-  const [path, setPath] = useState(window.location.pathname);
-  const [title, setTitle] = useState();
-
-  useEffect(() => {
-    switch (path) {
+  const [title, setTitle] = useState(() => {
+    switch (window.location.pathname) {
       case "/":
-        setTitle("WELCOME");
-        break;
+        return "WELCOME";
       case "/task-manager":
-        setTitle("TASK MANAGER");
-        break;
+        return "TASK MANAGER";
       case "/weather":
-        setTitle("WEATHER");
-        break;
+        return "WEATHER";
       default:
-        setTitle("Error");
+        return "ERROR";
     }
-  }, [path]);
+  });
 
   return (
     <div className="body">
@@ -30,7 +24,7 @@ export default function SiteWrap() {
       </header>
       <div className="site-wrap">
         <div className="app-wrap">
-          <Navbar setPath={setPath} />
+          <Navbar setTitle={setTitle} />
           <AppContainer title={title} />
         </div>
       </div>
