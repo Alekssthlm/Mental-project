@@ -4,7 +4,7 @@ import AppContainer from "../components/AppContainer";
 
 export default function SiteWrap() {
   const [title, setTitle] = useState(() => {
-    switch (window.location.pathname) {
+    switch (window.location.pathname){
       case "/":
         return "WELCOME";
       case "/task-manager":
