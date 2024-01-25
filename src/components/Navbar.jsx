@@ -13,6 +13,9 @@ export default function Navbar({setTitle}) {
         <li>
           <Link className="nav-links" to="/weather" onClick={() => setTitle(()=>"WEATHER")}>WEATHER</Link>
         </li>
+        <li>
+          <Link className="nav-links" to="/calendar" onClick={() => setTitle(()=>"CALENDAR")}>CALENDAR</Link>
+        </li>
       </ul>
     </div>
   );

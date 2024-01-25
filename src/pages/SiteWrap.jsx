@@ -11,6 +11,8 @@ export default function SiteWrap() {
         return "TASK MANAGER";
       case "/weather":
         return "WEATHER";
+        case "/calendar":
+          return "CALENDAR";
       default:
         return "ERROR";
     }

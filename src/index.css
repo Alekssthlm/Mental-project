@@ -83,7 +83,7 @@ ul{
   height: 60vmin;
 }
 
-/* TO-DO PAGE */
+/* TASK MANAGER */
 
 .input-bar{
   display: flex;
@@ -134,4 +134,15 @@ ul{
   color: red;
   background: none;
   border-radius: 5px;
+}
+
+/* CALENDAR */
+
+.calendar-wrap{
+  display: flex;
+}
+
+.calendar-events{
+  width: 100%;
+  background-color: aqua;
 }
