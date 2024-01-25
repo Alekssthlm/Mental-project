@@ -1,0 +1,137 @@
+/* GLOBAL */
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.body{
+  background-color: rgb(128, 254, 237);
+  font-family: 'Open Sans', sans-serif;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+ul{
+  list-style: none;
+}
+
+/* LOCAL */
+
+.site-header{
+  display: flex;
+  justify-content: space-between;
+  background-color: rgb(255, 255, 255);
+  padding: 1rem;
+  margin: 0 0 1rem;
+  font-size: 2rem;
+}
+
+.site-wrap{
+  display: flex;
+  justify-content: center;
+  align-items: start;
+  flex: 1;
+}
+
+.footer{
+  display: flex;
+  justify-content: center;
+  background-color: white;
+  padding: 2rem;
+  font-size: 1.5rem;
+}
+
+.app-wrap{
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  width: 80vmin;
+  max-width: 50rem;
+  padding: 1rem;
+  gap: 1rem;
+}
+
+
+/* Main navbar */
+
+.main-navbar{
+  background-color: white;
+  padding: 0.8rem;
+  border-radius: 10px;
+}
+
+.nav-link-container{
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.nav-links{
+  text-decoration: none;
+}
+
+
+
+/* APP CONTAINER */
+
+.app-container{
+  background-color: white;
+  padding: 2rem;
+  border-radius: 10px;
+  height: 60vmin;
+}
+
+/* TO-DO PAGE */
+
+.input-bar{
+  display: flex;
+  gap: 1rem;
+  margin: 0 0 1rem;
+  align-items: center;
+}
+
+.input-field{
+  height: 2rem;
+  flex: 2;
+}
+
+.add-todo-btn{
+  padding: 0.5rem 1rem;
+  flex: 1;
+}
+
+.todo-list{
+  background-color: rgb(243, 243, 243);
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  height: 18rem;
+  overflow-y: auto;
+}
+
+.todo-wrap{
+  display: grid;
+  gap: 1rem;
+  background-color: rgb(245, 255, 252);
+  padding: 1rem;
+}
+
+.todo-item {
+  font-size: 1rem;
+}
+
+.todo-check:checked ~ .todo-item{
+  text-decoration: line-through;
+}
+
+.delete-button{
+  padding: 0.2rem 0.5rem;
+  width: 5rem;
+  border-color: red;
+  color: red;
+  background: none;
+  border-radius: 5px;
+}
