@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react"
+import useLocalStorage from "../useLocalStorage"
 
-export default function CalendarWrap({selectedDate}){
+export default function CalendarWrap({selectedDate, setHasValues}){
   const [newTask, setNewTask] = useState('')
-  const [taskList, setTaskList] = useState([])
+  const [taskList, setTaskList] = useLocalStorage('CALENDAR-TASKS',[])
   const [currentTasks, setCurrentTasks] = useState([])
 
   useEffect(() =>{
@@ -13,13 +14,17 @@ export default function CalendarWrap({selectedDate}){
     )
   }, [taskList, selectedDate])
 
-  console.log(currentTasks, 'current list')
-  console.log(taskList, 'task list')
+  useEffect(() => {
+    setHasValues(() => {
+      return taskList})
+  }, [currentTasks])
 
   function handleAddTask(){
+    if(newTask === '') return
     setTaskList((currentList) => {
       return [...currentList, {date: selectedDate, task: newTask, id:crypto.randomUUID()}]
     })
+    setNewTask('')
   }
 
   function handleDeleteTask(id){
@@ -34,9 +39,9 @@ export default function CalendarWrap({selectedDate}){
 
   return (
     <div className='calendar-events'>
-      <p>{`Schedule for ${selectedDate}`}</p>
+      {selectedDate === undefined ? <p>Select a date</p> :<p>{`Schedule for ${selectedDate}`}</p>}
       <div>
-      <input type="text" value={newTask} onChange={(e) => setNewTask(e.target.value)}/>
+      <input type="text" value={newTask} onChange={(e) => setNewTask(e.target.value)} onKeyDown={(e) => e.key === 'Enter' && handleAddTask()}/>
       <button onClick={handleAddTask}>ADD TASK</button>
       </div>
       <ul>
