@@ -1,21 +1,23 @@
 import { useEffect, useState } from "react";
 import Navbar from "../components/Navbar";
 import AppContainer from "../components/AppContainer";
+import Time from "../components/Time";
 
 export default function SiteWrap() {
   const [path, setPath] = useState(window.location.pathname);
   const [title, setTitle] = useState();
 
+
   useEffect(() => {
     switch (path) {
       case "/":
-        setTitle("WELCOME");
+        setTitle("");
         break;
       case "/task-manager":
-        setTitle("TASK MANAGER");
+        setTitle("");
         break;
       case "/weather":
-        setTitle("WEATHER");
+        setTitle("");
         break;
       default:
         setTitle("Error");
@@ -25,7 +27,7 @@ export default function SiteWrap() {
   return (
     <div className="body">
       <header className="site-header">
-        <div>12:50</div>
+        <Time />
         <div>weather</div>
       </header>
       <div className="site-wrap">
