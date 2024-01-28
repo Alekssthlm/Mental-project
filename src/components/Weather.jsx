@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import apiKeys from "../config";
 
 import search_icon from "../assets/search.png";
 import currentlocation_icon from "../assets/currentlocation.png";
@@ -17,29 +18,18 @@ import thunderstorm_icon from "../assets/thunderstorm.png";
 import sunrise_icon from "../assets/sunrise.png";
 import sunset_icon from "../assets/sunset.png";
 
-export default function Weather({ weatherData, setApiURL, currentLocation }) {
-  let api_key = "aaf1e04e50f0f451f7db8aa0f763a0aa";
+export default function Weather({ weatherData, fetchWeatherData, updateLocation }) {
   const [wicon, setWicon] = useState(clearnight_icon);
 
-  let sunriseData = weatherData.sys.sunrise;
-  let sunsetData = weatherData.sys.sunset;
-
-  let sunriseDateObj = new Date(sunriseData * 1000);
-  let sunsetDateObj = new Date(sunsetData * 1000);
-  let sunriseHours = sunriseDateObj.getUTCHours();
-  let sunriseMinutes = sunriseDateObj.getUTCMinutes();
-  let sunsetHours = sunsetDateObj.getUTCHours();
-  let sunsetMinutes = sunriseDateObj.getUTCMinutes();
-
-  let sunriseFormatted =
-    sunriseHours.toString().padStart(2, 0) +
-    ":" +
-    sunriseMinutes.toString().padStart(2, 0);
-
-  let sunsetFormatted =
-    sunsetHours.toString().padStart(2, 0) +
-    ":" +
-    sunsetMinutes.toString().padStart(2, 0);
+  const formatTime = (timestamp) => {
+    const dateObj = new Date(timestamp * 1000);
+    const hours = dateObj.getUTCHours().toString().padStart(2, '0');
+    const minutes = dateObj.getUTCMinutes().toString().padStart(2, '0');
+    return `${hours}:${minutes}`;
+  };
+  
+  let sunriseFormatted = formatTime(weatherData.sys.sunrise);
+  let sunsetFormatted = formatTime(weatherData.sys.sunset);
 
   const iconMapping = {
     "01d": clearday_icon,
@@ -67,22 +57,24 @@ export default function Weather({ weatherData, setApiURL, currentLocation }) {
     setWicon(selectedIcon);
   }, [weatherData.weather]);
 
-  function handleSearch() {
-    const element = document.getElementsByClassName("cityInput");
-    if (element[0].value == "") {
-      return 0;
-    }
-    setApiURL(`https://api.openweathermap.org/data/2.5/weather?q=${element[0].value}&units=Metric&appid=${api_key}`)
-  }
+  const handleSearch = () => {
+    const cityInput = document.querySelector(".cityInput");
+    const city = cityInput.value.trim();
+    if (city) {
+      const newApiURL = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${apiKeys.weather}`;
+      fetchWeatherData(newApiURL);
+      cityInput.value = "";
+    }   
+  };
 
-  function handleCurrentLocation() {
-    currentLocation("");
-  }
+  const handleCurrentLocation = () => {
+    updateLocation();
+  };
 
   return (
     <div className="weather-container">
       <div className="top-bar">
-      <button className="currentlocation-icon" onClick={handleCurrentLocation}>
+      <button className="currentlocation-icon" onClick={handleCurrentLocation} title="Get your current locations weather">
           <img src={currentlocation_icon} alt="" />
         </button>
         <input type="text" className="cityInput" placeholder="Search" />

@@ -31,6 +31,17 @@ ul{
   color: white;
 }
 
+.header-weather {
+    display: flex;
+    align-items: center;
+    gap: 1vh;
+}
+
+.header-weather-icon {
+  width: 4vh;
+  height: 4vh;
+}
+
 .site-wrap{
   display: flex;
   justify-content: center;
@@ -41,10 +52,11 @@ ul{
 
 .footer{
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   background-color: rgba(0, 0, 0, 0.3);
   border-top: 6px solid rgba(0, 0, 0, 0.4);
   padding: 2vh;
+  font-size: 1.5vh;
   font-size: 1.5vh;
   color: white;
 }
