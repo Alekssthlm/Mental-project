@@ -53,11 +53,9 @@ ul{
 .footer{
   display: flex;
   justify-content: space-between;
-  background-color: rgba(0, 0, 0, 0.3);
-  border-top: 6px solid rgba(0, 0, 0, 0.4);
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.498), transparent);
   padding: 2vh;
-  font-size: 1.5vh;
-  font-size: 1.5vh;
+  font-size: 2vh;
   color: white;
 }
 

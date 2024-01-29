@@ -23,6 +23,7 @@
     font-weight: 400;
     margin-right: 0.5vw;
     margin-left: 0.5vw;
+    box-shadow: 0 4px 6px black;
 }
 
 .search-icon {
@@ -35,6 +36,11 @@
     border: none;
     border-radius: 2rem;
     cursor: pointer;
+    box-shadow: 0 4px 6px black;
+}
+
+.search-icon:hover {
+    box-shadow: 0 4px 6px black;
 }
 
 .currentlocation-icon {
@@ -47,6 +53,7 @@
     border: none;
     border-radius: 2rem;
     cursor: pointer;
+    box-shadow: 0 4px 6px black;
 }
 
 .weather-image {
