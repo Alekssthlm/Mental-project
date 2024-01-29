@@ -35,13 +35,16 @@ ul{
   flex: 1;
 }
 
+
 .footer{
   display: flex;
   justify-content: center;
   background-color: white;
-  padding: 2rem;
+  width: 100vw;
+  height: 2vh;
   font-size: 1.5rem;
 }
+
 
 .app-wrap{
   display: flex;
