@@ -20,10 +20,10 @@ export default function CalendarPage() {
       actions: {
         clickDay(event, self) {
           setSelectedDate(self.selectedDates[0]);
+          console.log(self.selectedDates[0])
         },
         getDays(day, date, HTMLElement, HTMLButtonElement, self) {
-          console.log(self)
-
+          
           const filteredArray = hasValues.filter(d => {
             return d.date === date
           })
@@ -37,11 +37,16 @@ export default function CalendarPage() {
             `;
           }
         },
+        
       },
+      date: {
+        today: new Date(selectedDate),
+      }
     };
 
     const calendar = new VanillaCalendar("#calendar", options);
     calendar.init();
+    console.log(calendar)
   }, [hasValues]);
 
   return (
