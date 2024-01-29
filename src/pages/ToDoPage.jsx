@@ -1,6 +1,6 @@
 import { useState } from "react";
 import ToDoItem from "../components/ToDoItem";
-import useLocalStorage from "../useLocalStorage";
+import useLocalStorage from "../hooks/useLocalStorage";
 
 export default function ToDoPage() {
   const [newTodo, setNewTodo] = useState("");
