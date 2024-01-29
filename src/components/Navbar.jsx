@@ -1,8 +1,6 @@
-import { useEffect } from "react";
 import { Link } from "react-router-dom";
 
-export default function Navbar({setPath}) {
-
+export default function Navbar({setTitle}) {
   return (
     <div className="main-navbar">
       <ul className="nav-link-container">
