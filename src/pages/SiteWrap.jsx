@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import Navbar from "../components/Navbar";
 import AppContainer from "../components/AppContainer";
+import Footer from "../components/Footer";
 
 export default function SiteWrap() {
   const [path, setPath] = useState(window.location.pathname);
@@ -35,7 +36,7 @@ export default function SiteWrap() {
         </div>
       </div>
       <footer className="footer">
-        <p>"Quote of the day!"</p>
+        <Footer />
       </footer>
     </div>
   );
