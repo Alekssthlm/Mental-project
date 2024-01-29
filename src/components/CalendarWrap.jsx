@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import useLocalStorage from "../useLocalStorage"
+import useLocalStorage from "../hooks/useLocalStorage";
 
 export default function CalendarWrap({selectedDate, setHasValues}){
   const [newTask, setNewTask] = useState('')

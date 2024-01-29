@@ -8,7 +8,6 @@
 .body{
   background-image: url("./assets/archipelago_3-wallpaper-3440x1440.jpg");
   background-size: cover;
-  /*background-color: rgb(128, 254, 237);*/
   font-family: 'Open Sans', sans-serif;
   display: flex;
   flex-direction: column;

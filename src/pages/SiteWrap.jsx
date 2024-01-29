@@ -12,20 +12,7 @@ import clearday_icon from "../assets/clearday.png";
 
 export default function SiteWrap() {
   const { weatherData } = useWeatherData();
-  const [title, setTitle] = useState(() => {
-    switch (window.location.pathname){
-      case "/":
-        return "WELCOME";
-      case "/task-manager":
-        return "TASK MANAGER";
-      case "/weather":
-        return "WEATHER";
-        case "/calendar":
-          return "CALENDAR";
-      default:
-        return "ERROR";
-    }
-  });
+
 
   return (
     <div className="body">
@@ -43,8 +30,8 @@ export default function SiteWrap() {
       </header>
       <div className="site-wrap">
         <div className="app-wrap">
-          <Navbar setTitle={setTitle} />
-          <AppContainer title={title} />
+          <Navbar />
+          <AppContainer />
         </div>
       </div>
       <footer className="footer">
