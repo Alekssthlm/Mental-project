@@ -278,6 +278,12 @@ ul{
   overflow-y: auto;
 }
 
+@media (max-width: 575.98px){
+  .calendar-task-list{
+    height: 18vh;
+  }
+}
+
 /* .calendar-title{
 
 } */

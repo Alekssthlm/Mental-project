@@ -20,7 +20,7 @@ export default function ToDoItem({ todo, id, checked, onDelete, toggleTodo }) {
             onDelete(id);
           }}
         >
-          <i class="fa-regular fa-trash-can"></i>
+          <i className="fa-regular fa-trash-can"></i>
         </button>
       ) : null}
     </li>
