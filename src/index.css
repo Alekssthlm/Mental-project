@@ -278,9 +278,9 @@ ul{
   overflow-y: auto;
 }
 
-.calendar-title{
+/* .calendar-title{
 
-}
+} */
 
 @media (max-width: 575.98px){
   .calendar-title{
