@@ -2,7 +2,7 @@ export default function ToDoItem({ todo, id, checked, onDelete, toggleTodo }) {
 
   return (
     <li className="todo-wrap">
-      <label>
+      <label className="todo-label-wrap">
         <input
           className="todo-check"
           type="checkbox"
@@ -20,7 +20,7 @@ export default function ToDoItem({ todo, id, checked, onDelete, toggleTodo }) {
             onDelete(id);
           }}
         >
-          DELETE
+          <i class="fa-regular fa-trash-can"></i>
         </button>
       ) : null}
     </li>

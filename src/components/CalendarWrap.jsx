@@ -39,24 +39,17 @@ export default function CalendarWrap({selectedDate, setHasValues}){
 
   return (
     <div className='calendar-events'>
-      {selectedDate === undefined ? <p>Select a date</p> :<p>{`Schedule for ${selectedDate}`}</p>}
-      <div>
-      <input type="text" value={newTask} onChange={(e) => setNewTask(e.target.value)} onKeyDown={(e) => e.key === 'Enter' && handleAddTask()}/>
-      <button onClick={handleAddTask}>ADD TASK</button>
+      {selectedDate === undefined ? <p className="calendar-title">Select a date</p> : <p className="calendar-title">{`Schedule for ${selectedDate}`}</p>}
+      <div className="calendar-input-wrap">
+      <input type="text" className="calendar-input" placeholder="New task" value={newTask} onChange={(e) => setNewTask(e.target.value)} onKeyDown={(e) => e.key === 'Enter' && handleAddTask()}/>
+      <button className="calendar-btn" onClick={handleAddTask}>+</button>
       </div>
-      <ul>
+      <ul className="calendar-task-list">
         {currentTasks.length === 0 ? <p>Nothing scheduled</p> :
         currentTasks.map(task => {
           return <CalendarItem task={task.task} key={task.id} id={task.id} onDelete={handleDeleteTask} />
         })
         }
-
-        {/* {taskList.length === 0 ? <p>Nothing scheduled</p> : 
-        taskList.map((task) =>{
-          if(task.date === selectedDate){
-            return <CalendarItem task={task.task} key={task.id} id={task.id} onDelete={handleDeleteTask} />
-          } 
-        })} */}
       </ul>
       </div>
   )
@@ -65,8 +58,8 @@ export default function CalendarWrap({selectedDate, setHasValues}){
 function CalendarItem({task, id, onDelete}){
 
   return (
-    <li>
-      <label>
+    <li className="todo-wrap-calendar">
+      <label className="calendar-task-label">
         <span> {task}</span>
       </label>
         <button
@@ -75,7 +68,7 @@ function CalendarItem({task, id, onDelete}){
             onDelete(id);
           }}
         >
-          DELETE
+          <i class="fa-regular fa-trash-can"></i>
         </button>
     </li>
   );

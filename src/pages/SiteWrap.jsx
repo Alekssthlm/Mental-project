@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, createContext } from "react";
 import Navbar from "../components/Navbar";
 import AppContainer from "../components/AppContainer";
 
@@ -9,12 +9,21 @@ import Footer from "../components/Footer";
 
 import settings_icon from "../assets/settings.png";
 import clearday_icon from "../assets/clearday.png";
+import useLocalStorage from "../hooks/useLocalStorage.js";
+
+export const ThemeContext = createContext()
 
 export default function SiteWrap() {
   const { weatherData } = useWeatherData();
+  const [isDarkMode, setIsDarkMode] = useLocalStorage('DARKMODE', true)
 
+  function toggleTheme(){
+    setIsDarkMode(d => !d)
+  }
 
+  console.log(isDarkMode)
   return (
+    <ThemeContext.Provider value={{isDarkMode, toggleTheme}}>
     <div className="body">
       <header className="site-header">
         <Time />
@@ -40,5 +49,6 @@ export default function SiteWrap() {
         <img className="settings-icon" src={settings_icon} alt=""></img>
       </footer>
     </div>
+    </ThemeContext.Provider>
   );
 }
