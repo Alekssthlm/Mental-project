@@ -20,9 +20,11 @@ export default function Navbar() {
         <li>
           <Link className="nav-links" to="/calendar" >Calendar</Link>
         </li>
+        <li>
+          <Link className="nav-links" to="/unit-converter" style={{textWrap: 'nowrap'}}>Unit Converter</Link>
+        </li>
       </ul>
           <button className={isDarkMode ? "toggle-theme-btn  toggle-theme-btn-light" : "toggle-theme-btn"} onClick={toggleTheme}>{isDarkMode ? <i className="fa-solid fa-sun" style={{color: 'yellow'}}></i> : <i className="fa-solid fa-moon"></i>}</button>
-        
     </div>
   );
 }

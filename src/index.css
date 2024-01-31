@@ -97,6 +97,7 @@ ul{
 @media (max-width: 575.98px){
   .nav-link-container{
     padding-left: 1rem;
+    justify-content: flex-start;
   }
 }
 
@@ -227,7 +228,6 @@ ul{
 
 .todo-item {
   font-size: 1rem;
-  
 }
 
 .todo-check:checked ~ .todo-item{
@@ -335,4 +335,59 @@ ul{
 
 .calendar-task-label{
   flex: 1;
+}
+
+
+/* UNIT CONVERTER */
+
+.converter-container{
+  width: 100%;
+  max-width: 20rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.unit-select{
+  width: 100%;
+  padding: 0.5rem;
+}
+
+.converter-input-wrap{
+  display: flex;
+}
+
+.converter-input{
+  font-size: 1.2rem;
+  flex: 1;
+  background: #ebfffc;
+  padding-left: 0.5rem;
+}
+
+@media (max-width: 575.98px){
+  .converter-input{
+    font-size: 1rem;
+  }
+}
+
+.converter-btn{
+  font-size: 1.2rem;
+  background: #212B63;
+  color: white;
+  padding: 0.5rem;
+}
+
+.conversion-container{
+  text-align: center;
+  padding: 2rem;
+  font-size: 1.5rem;
+  background: #ebfffc;
+  border-radius: 5px;
+  height: 40%;
+}
+
+@media (max-width: 575.98px){
+  .conversion-container{
+    font-size: 1rem;
+  }
 }
