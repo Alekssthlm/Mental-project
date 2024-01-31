@@ -41,16 +41,17 @@ export default function UnitConverterPage() {
         >
           <option value="title">Select units</option>
           <option value="title">--WEIGHT--</option>
-          <option value="LBS-KILOS">LBS to KILOS</option>
-          <option value="KILOS-LBS">KILOS to LBS</option>
+          <option value="LBS-KILOS">lbs to kg</option>
+          <option value="KILOS-LBS">kg to lbs</option>
           <option value="title">--TEMPERATURE--</option>
-          <option value="C-F">C° to F°</option>
-          <option value="F-C">F° to C°</option>
+          <option value="C-F">°C to °F</option>
+          <option value="F-C">°F to °C</option>
         </select>
         <div className="converter-input-wrap">
           <input
             type="text"
             className="converter-input"
+            placeholder="Enter value"
             value={value}
             onChange={(e) => setValue(e.target.value)}
           />
