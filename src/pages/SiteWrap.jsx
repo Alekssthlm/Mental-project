@@ -21,7 +21,6 @@ export default function SiteWrap() {
     setIsDarkMode(d => !d)
   }
 
-  console.log(isDarkMode)
   return (
     <ThemeContext.Provider value={{isDarkMode, toggleTheme}}>
     <div className="body">
@@ -44,9 +43,7 @@ export default function SiteWrap() {
         </div>
       </div>
       <footer className="footer">
-        <div className="todo">To Do</div>
         <Footer />
-        <img className="settings-icon" src={settings_icon} alt=""></img>
       </footer>
     </div>
     </ThemeContext.Provider>

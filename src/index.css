@@ -25,7 +25,7 @@ ul{
   justify-content: space-between;
   background: linear-gradient(to bottom, rgba(0, 0, 0, 0.498) 20%, transparent);
   padding: 2vh;
-  font-size: 3vh;
+  font-size: 2.5vh;
   color: white;
 }
 
@@ -47,6 +47,12 @@ ul{
   flex: 1;
   margin: 1vh;
   overflow-y: auto;
+}
+
+@media (max-width: 575.98px){
+  .site-wrap{
+    margin: 0;
+  }
 }
 
 
@@ -157,6 +163,12 @@ ul{
   align-items: center;
 }
 
+@media (max-width: 575.98px){
+  .input-bar{
+    gap: 0.2rem;
+  }
+}
+
 .input-field{
   height: 2rem;
   flex: 2;
@@ -214,11 +226,23 @@ ul{
   overflow-y: auto;
 }
 
+@media (max-width: 575.98px){
+  .todo-list{
+    gap: 0.5rem;
+  }
+}
+
 .todo-wrap{
   display: flex;
   background-color: rgb(245, 255, 252);
-  padding: 1rem;
-  border-radius: 25px;
+  padding: 0.8rem;
+  border-radius: 5px;
+}
+
+@media (max-width: 575.98px){
+  .todo-wrap{
+    padding: 0.2rem 0.2rem 0.2rem 1rem;
+  }
 }
 
 .todo-label-wrap{
@@ -239,9 +263,15 @@ ul{
   width: 3rem;
   border-color: red;
   color: red;
-  background: none;
+  background: #ebfffc;
   border-radius: 5px;
   align-self: flex-start;
+}
+
+@media (max-width: 575.98px){
+  .delete-button{
+    width: 2rem;
+  }
 }
 
 /* CALENDAR */
@@ -268,20 +298,23 @@ ul{
   padding: 1rem;
   background-color: rgba(0, 0, 0, 0.583);
   flex: 1;
+  height: 100%;
+  overflow-y: auto;
+
+}
+
+@media (max-width: 575.98px){
+  .calendar-events{
+    padding: 0;
+  }
 }
 
 .calendar-task-list{
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
-  height: 52vmin;
+  height: 100%;
   overflow-y: auto;
-}
-
-@media (max-width: 575.98px){
-  .calendar-task-list{
-    height: 18vh;
-  }
 }
 
 /* .calendar-title{
@@ -330,7 +363,12 @@ ul{
   padding: 0.5rem 0.2rem 0.5rem 1rem;
   border-radius: 0.5rem;
   background: linear-gradient(to bottom, rgba(70, 70, 70, 0.498) 20%, transparent);
+}
 
+@media (max-width: 575.98px){
+  .todo-wrap-calendar{
+    padding: 0.2rem 0.2rem 0.2rem 1rem;
+  }
 }
 
 .calendar-task-label{

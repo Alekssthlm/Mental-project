@@ -38,7 +38,7 @@ export default function ToDoPage() {
   return (
     <div className="task-wrap">
       <div className="input-bar">
-        <input className="input-field" type="text" placeholder="New task" value={newTodo} onChange={(e) => setNewTodo(e.target.value)}/>
+        <input className="input-field" type="text" placeholder="New task" value={newTodo} onChange={(e) => setNewTodo(e.target.value)} onKeyDown={(e) => e.key === 'Enter' && handleAddTodo()}/>
         <button className="add-todo-btn" onClick={handleAddTodo}>ADD TASK</button>
       </div>
 
