@@ -188,6 +188,14 @@ ul{
 }
 
 
+/* WELCOME PAGE */
+
+.time-welcome-page{
+  font-size: 5rem;
+  height: 100%;
+  color: white;
+}
+
 
 /* TASK MANAGER */
 

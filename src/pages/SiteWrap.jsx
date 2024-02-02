@@ -22,7 +22,7 @@ export default function SiteWrap() {
   const [showMenu, setShowMenu] = useState(false)
   const [backgroundSetting, setBackgroundSetting] = useLocalStorage("BACKGROUND-SETTING", 'theme')
 
-  console.log(backgroundSetting)
+
   function toggleTheme() {
     setIsDarkMode((d) => !d);
   }
