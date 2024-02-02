@@ -1,15 +1,9 @@
-import { useState } from "react"
 import archipelago from "../assets/archipelago_3-wallpaper-3440x1440.jpg"
 import cloud from "../assets/clearday.png"
 import snow from "../assets/snow.png"
 
 
 export default function useImages(){
-
-const images = {
-  archipelago,
-
-}
 
 function backgroundByTheme(darkmode){ //we need an image for the light mode
   switch (darkmode) {
@@ -21,7 +15,6 @@ function backgroundByTheme(darkmode){ //we need an image for the light mode
 }
 
 function backgroundByTime(time){  //here we insert the images for the different hours but we should import them
-  console.log(time, 'time')
 
   if (time > 20 || time < 5) {
     console.log('over')
@@ -45,5 +38,5 @@ function backgroundByTime(time){  //here we insert the images for the different 
   }
 
   
-return {images, changeBackground}
+return {changeBackground}
 }

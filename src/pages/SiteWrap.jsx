@@ -17,7 +17,7 @@ export const ThemeContext = createContext();
 export default function SiteWrap() {
   const { time, hour } = useTime();
   const { weatherData } = useWeatherData();
-  const { images, changeBackground } = useImages();
+  const { changeBackground } = useImages();
   const [isDarkMode, setIsDarkMode] = useLocalStorage("DARKMODE", true);
   const [showMenu, setShowMenu] = useState(false)
   const [backgroundSetting, setBackgroundSetting] = useLocalStorage("BACKGROUND-SETTING", 'theme')
