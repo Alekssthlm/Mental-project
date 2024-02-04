@@ -1,12 +1,9 @@
 import { createContext, useState } from "react";
 import Navbar from "../components/Navbar";
 import AppContainer from "../components/AppContainer";
-
 import CurrentDate from "../components/CurrentDate";
 import useWeatherData from "../hooks/useWeatherData.js";
 import Footer from "../components/Footer";
-
-import settings_icon from "../assets/settings.png";
 import clearday_icon from "../assets/clearday.png";
 import useLocalStorage from "../hooks/useLocalStorage.js";
 import useTime from "../hooks/useTime.js";
@@ -21,8 +18,7 @@ export default function SiteWrap() {
   const [isDarkMode, setIsDarkMode] = useLocalStorage("DARKMODE", true);
   const [showMenu, setShowMenu] = useState(false)
   const [backgroundSetting, setBackgroundSetting] = useLocalStorage("BACKGROUND-SETTING", 'theme')
-
-
+  
   function toggleTheme() {
     setIsDarkMode((d) => !d);
   }
@@ -32,6 +28,7 @@ export default function SiteWrap() {
       <div
         className="body"
         style={{ backgroundImage: `url(${changeBackground(backgroundSetting, isDarkMode, hour)})` }}
+        
       >
         <header className="site-header">
           <div className="site-header-menu-wrap">

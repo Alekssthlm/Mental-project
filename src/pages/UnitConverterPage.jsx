@@ -1,7 +1,5 @@
 import { useReducer, useState } from "react";
 
-const ACTIONS = {};
-
 function reducer(result, action) {
   if(isNaN(action.payload.value) === true) {
     alert('Insert only numbers!')
@@ -25,9 +23,6 @@ export default function UnitConverterPage() {
   const [unitSelector, setUnitSelector] = useState("title");
   const [value, setValue] = useState("");
   const [result, dispatch] = useReducer(reducer, "--");
-
-  console.log(unitSelector, "unitSelector main");
-  console.log(result, "result main");
 
   return (
     <div className="converter-container">

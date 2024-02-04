@@ -129,12 +129,15 @@ ul{
   gap: 0.5rem;
 }
 
+.main-navbar-lightmode{
+  background-color: rgba(224, 224, 224, 0.664);
+}
+
 .nav-link-container{
   display: flex;
   align-items: center;
   justify-content: space-around;
   gap: 1rem;
-  color: white;
   flex: 1;
   overflow-x: auto;
 }
@@ -147,12 +150,14 @@ ul{
 }
 
 .nav-links{
+  color: white;
   text-decoration: none;
   font-size: 2vh;
+  font-weight: 500;
 }
 
-.nav-links:visited{
-  color: white;
+.nav-links-lightmode{
+  color: black;
 }
 
 .toggle-theme-btn{
@@ -187,6 +192,9 @@ ul{
   background-color: rgba(224, 224, 224, 0.664);
 }
 
+.app-container-transparent{
+  background: none;
+}
 
 /* WELCOME PAGE */
 
