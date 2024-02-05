@@ -8,7 +8,6 @@ export default function AppContainer(){
   const location = useLocation()
 
   useEffect(() => {
-    console.log('change', location.pathname)
     if(location.pathname === "/"){
       return setBackground("app-container app-container-transparent")
     } else if(location.pathname !== "/" && isDarkMode) {

@@ -27,7 +27,7 @@ const IMAGES_BY_HOUR = {
 
 export default function useImages() {
   function backgroundByTheme(darkmode) {
-    //we need an image for the light mode
+    //handle images for dark/light mode
     switch (darkmode) {
       case true:
         return IMAGES_BY_HOUR.h24;
@@ -37,7 +37,7 @@ export default function useImages() {
   }
 
   function backgroundByTime(time) {
-    //here we insert the images for the different hours but we should import them
+    //here we insert the images for the different hours
 
     switch (time) {
       case 1:
@@ -91,8 +91,8 @@ export default function useImages() {
     }
   }
 
-  function changeBackground(setting, darkmode, time) {
-    switch (setting) {
+  function changeBackground(setting, darkmode, time) { //handles background image for site by theme or hour of day
+    switch (setting) { 
       case "theme":
         return backgroundByTheme(darkmode);
       case "hour":

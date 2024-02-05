@@ -1,4 +1,5 @@
-import { useReducer, useState } from "react";
+import { useContext, useReducer, useState } from "react";
+import { ThemeContext } from "./SiteWrap";
 
 function reducer(result, action) {
   if(isNaN(action.payload.value) === true) {
@@ -23,13 +24,14 @@ export default function UnitConverterPage() {
   const [unitSelector, setUnitSelector] = useState("title");
   const [value, setValue] = useState("");
   const [result, dispatch] = useReducer(reducer, "--");
+  const {isDarkMode} = useContext(ThemeContext)
 
   return (
     <div className="converter-container">
       <div className="converter-header-wrap">
         <select
           type="dropdown"
-          className="unit-select"
+          className={isDarkMode ? "unit-select" : "unit-select unit-select-light"}
           onChange={(e) => {
             setUnitSelector(e.target.value);
           }}
@@ -45,7 +47,7 @@ export default function UnitConverterPage() {
         <div className="converter-input-wrap">
           <input
             type="text"
-            className="converter-input"
+            className={isDarkMode ? "converter-input" : "converter-input converter-input-light"}
             placeholder="Enter value"
             value={value}
             onChange={(e) => setValue(e.target.value)}

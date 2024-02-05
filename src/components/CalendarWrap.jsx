@@ -1,7 +1,9 @@
-import { useEffect, useState } from "react"
+import { useContext, useEffect, useState } from "react"
 import useLocalStorage from "../hooks/useLocalStorage";
+import { ThemeContext } from "../pages/SiteWrap";
 
 export default function CalendarWrap({selectedDate, setHasValues}){ 
+  const {isDarkMode} = useContext(ThemeContext)
   const [newTask, setNewTask] = useState('')    //value from text input
   const [taskList, setTaskList] = useLocalStorage('CALENDAR-TASKS',[])
   const [currentTasks, setCurrentTasks] = useState([])
@@ -39,13 +41,13 @@ export default function CalendarWrap({selectedDate, setHasValues}){
 
   return (
     <div className='calendar-events'>
-      {selectedDate === undefined ? <p className="calendar-title">Select a date</p> : <p className="calendar-title">{`Schedule for ${selectedDate}`}</p>}
+      {selectedDate === undefined ? <p className={isDarkMode ? "calendar-title" : "calendar-title calendar-title-light"}>Select a date</p> : <p className={isDarkMode ? "calendar-title" : "calendar-title calendar-title-light"}>{`Schedule for ${selectedDate}`}</p>}
       <div className="calendar-input-wrap">
-      <input type="text" className="calendar-input" placeholder="New task" value={newTask} onChange={(e) => setNewTask(e.target.value)} onKeyDown={(e) => e.key === 'Enter' && handleAddTask()}/>
+      <input type="text" className={isDarkMode ? "calendar-input" : "calendar-input calendar-input-light"} placeholder="New task" value={newTask} onChange={(e) => setNewTask(e.target.value)} onKeyDown={(e) => e.key === 'Enter' && handleAddTask()}/>
       <button className="calendar-btn" onClick={handleAddTask}>+</button>
       </div>
-      <ul className="calendar-task-list">
-        {currentTasks.length === 0 ? <p>Nothing scheduled</p> :
+      <ul className={isDarkMode ? "calendar-task-list" : "calendar-task-list calendar-task-list-light"}>
+        {currentTasks.length === 0 ? <p style={{padding: "0.4rem 0.2rem", textShadow:"1px 1px 10px rgba(0, 0, 0, 0.424)"}}>Nothing scheduled</p> :
         currentTasks.map(task => {
           return <CalendarItem task={task.task} key={task.id} id={task.id} onDelete={handleDeleteTask} />
         })
@@ -56,9 +58,10 @@ export default function CalendarWrap({selectedDate, setHasValues}){
 }
 
 function CalendarItem({task, id, onDelete}){  //secondary component defined in the same page, used right above
+  const {isDarkMode} = useContext(ThemeContext)
 
   return (
-    <li className="todo-wrap-calendar">
+    <li className={isDarkMode ? "todo-wrap-calendar" : "todo-wrap-calendar todo-wrap-calendar-light"}>
       <label className="calendar-task-label">
         <span> {task}</span>
       </label>
@@ -68,7 +71,7 @@ function CalendarItem({task, id, onDelete}){  //secondary component defined in t
             onDelete(id);
           }}
         >
-          <i className="fa-regular fa-trash-can"></i>
+          <i className="fa-solid fa-xmark"></i>
         </button>
     </li>
   );
