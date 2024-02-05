@@ -9,10 +9,10 @@ import Footer from "../components/Footer";
 
 import settings_icon from "../assets/settings.png";
 import clearday_icon from "../assets/clearday.png";
+import TopWeather from "../components/TopWeather";
 
 export default function SiteWrap() {
   const { weatherData } = useWeatherData();
-
 
   return (
     <div className="body">
@@ -20,12 +20,7 @@ export default function SiteWrap() {
         <Time />
         <CurrentDate />
         <div className="header-weather">
-        {weatherData && weatherData.main && (
-            <>
-              <img className="header-weather-icon" src={clearday_icon} alt="" />
-              <div className="temperature">{Math.round(weatherData.main.temp)} &deg;C</div>
-            </>
-          )}
+          <TopWeather weatherData={weatherData} />
         </div>
       </header>
       <div className="site-wrap">
