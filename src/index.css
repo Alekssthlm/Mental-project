@@ -30,19 +30,19 @@ ul{
   justify-content: space-between;
   position: relative;
   z-index: 10;
-  /* background: linear-gradient(to bottom, rgba(0, 0, 0, 0.498) 20%, transparent); */
   padding: 2vh;
   font-size: 2.5vh;
   color: white;
   gap: 0.8rem;
   text-shadow: 1px 1px 30px black;
-
   background: rgba(0, 0, 0, 0.63);
   border-bottom-left-radius: 16px;
   border-bottom-right-radius: 16px;
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(5px);
   border: 1px solid rgba(0, 0, 0, 0.10);
+  transition: all 1s;
+
 }
 
 .site-header-light{
@@ -145,13 +145,11 @@ ul{
 
 .main-navbar{
   height: 6vh;
-  /* background-color: rgba(0, 0, 0, 0.664); */
   padding: 1vh;
-  /* border-radius: 10px; */
   display: flex;
   align-items: center;
   gap: 0.5rem;
-
+  transition: all 1s;
   background: rgba(0, 0, 0, 0.63);
   border-radius: 16px;
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
@@ -203,9 +201,7 @@ ul{
 /* APP CONTAINER */
 
 .app-container{
-  /* background-color: rgba(0, 0, 0, 0.664); */
   padding: 1rem;
-  /* border-radius: 10px; */
   overflow: hidden;
   height: 100%;
   display: flex;
