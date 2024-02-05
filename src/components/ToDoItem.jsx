@@ -1,7 +1,11 @@
+import { useContext } from "react";
+import { ThemeContext } from "../pages/SiteWrap";
+
 export default function ToDoItem({ todo, id, checked, onDelete, toggleTodo }) {
+  const {isDarkMode} = useContext(ThemeContext)
 
   return (
-    <li className="todo-wrap">
+    <li className={isDarkMode ? "todo-wrap" : "todo-wrap todo-wrap-light"}>
       <label className="todo-label-wrap">
         <input
           className="todo-check"

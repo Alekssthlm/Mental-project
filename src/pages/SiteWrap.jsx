@@ -30,7 +30,7 @@ export default function SiteWrap() {
         style={{ backgroundImage: `url(${changeBackground(backgroundSetting, isDarkMode, hour)})` }}
         
       >
-        <header className="site-header">
+        <header className={isDarkMode ? "site-header" : "site-header site-header-light"}>
           <div className="site-header-menu-wrap">
           <div className="fa-solid fa-bars menu-btn" onClick={() => {setShowMenu(!showMenu)}}>
           <div className={showMenu ? "settings" : "settings hide-settings"}>

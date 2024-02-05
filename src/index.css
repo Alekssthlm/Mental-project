@@ -1,4 +1,9 @@
 /* GLOBAL */
+
+:root{
+  --primary: red;
+}
+
 *{
   margin: 0;
   padding: 0;
@@ -11,6 +16,7 @@
   display: flex;
   flex-direction: column;
   height: 100vh;
+  transition: all 1s;
 }
 
 ul{
@@ -22,11 +28,26 @@ ul{
 .site-header{
   display: flex;
   justify-content: space-between;
-  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.498) 20%, transparent);
+  position: relative;
+  z-index: 10;
+  /* background: linear-gradient(to bottom, rgba(0, 0, 0, 0.498) 20%, transparent); */
   padding: 2vh;
   font-size: 2.5vh;
   color: white;
   gap: 0.8rem;
+  text-shadow: 1px 1px 30px black;
+
+  background: rgba(0, 0, 0, 0.63);
+  border-bottom-left-radius: 16px;
+  border-bottom-right-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5px);
+  border: 1px solid rgba(0, 0, 0, 0.10);
+}
+
+.site-header-light{
+  background-color: rgba(224, 224, 224, 0.664);
+  color: black;
 }
 
 .site-header-widget-wrap{
@@ -47,6 +68,8 @@ ul{
 }
 
 .site-wrap{
+  position: relative;
+  z-index: 1;
   display: flex;
   justify-content: center;
   align-items: start;
@@ -105,6 +128,7 @@ ul{
   gap: 0.5rem;
   z-index: 10;
   border-radius: 5px;
+  color: white;
 }
 
 .hide-settings{
@@ -121,12 +145,18 @@ ul{
 
 .main-navbar{
   height: 6vh;
-  background-color: rgba(0, 0, 0, 0.664);
+  /* background-color: rgba(0, 0, 0, 0.664); */
   padding: 1vh;
-  border-radius: 10px;
+  /* border-radius: 10px; */
   display: flex;
   align-items: center;
   gap: 0.5rem;
+
+  background: rgba(0, 0, 0, 0.63);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5px);
+  border: 1px solid rgba(0, 0, 0, 0.10);
 }
 
 .main-navbar-lightmode{
@@ -173,13 +203,20 @@ ul{
 /* APP CONTAINER */
 
 .app-container{
-  background-color: rgba(0, 0, 0, 0.664);
+  /* background-color: rgba(0, 0, 0, 0.664); */
   padding: 1rem;
-  border-radius: 10px;
+  /* border-radius: 10px; */
   overflow: hidden;
   height: 100%;
   display: flex;
   justify-content: center;
+  transition: all 0.5s;
+
+  background: rgba(0, 0, 0, 0.63);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5px);
+  border: 1px solid rgba(0, 0, 0, 0.10);
 }
 
 @media (max-width: 575.98px){
@@ -194,6 +231,9 @@ ul{
 
 .app-container-transparent{
   background: none;
+  backdrop-filter: none;
+  border: none;
+  box-shadow: none;
 }
 
 /* WELCOME PAGE */
@@ -202,6 +242,7 @@ ul{
   font-size: 5rem;
   height: 100%;
   color: white;
+  text-shadow: 1px 1px 20px black;
 }
 
 
@@ -228,15 +269,21 @@ ul{
   height: 2rem;
   flex: 2;
   height: 3rem;
-  background: #ebfffc;
+  background: rgb(75, 75, 75, 0.63);
+  backdrop-filter: blur(5px);
   border: none;
   outline: none;
   border-radius: 2rem;
-  padding-left: 0.5rem;
-  color: #626262;
+  padding-left: 0.8rem;
+  color: #fff;
   font-size: 1.2rem;
   font-weight: 400;
   box-shadow: 0 4px 6px black;
+}
+
+.input-field-light{
+  color: black;
+  background-color: rgba(255, 255, 255, 0.63);
 }
 
 @media (max-width: 575.98px){
@@ -249,7 +296,7 @@ ul{
 .add-todo-btn{
   flex: 1;
   height: 3rem;
-  background: #212B63;
+  background: #6101EE;
   border-radius: 2rem;
   color: #fff;
   font-size: 1rem;
@@ -266,11 +313,11 @@ ul{
 }
 
 .add-todo-btn:hover{
-  background: #283165;
+  background: #4b00bc;
 }
 
 .add-todo-btn:active{
-  background: #212B63;
+  background: #6101EE;
 }
 
 .todo-list{
@@ -289,9 +336,16 @@ ul{
 
 .todo-wrap{
   display: flex;
-  background-color: rgb(245, 255, 252);
+  background-color: rgb(75, 75, 75, 0.63);
   padding: 0.8rem;
-  border-radius: 5px;
+  border-radius: 25px;
+  color: white;
+  backdrop-filter: blur(5px);
+}
+
+.todo-wrap-light{
+  color: black;
+  background-color: rgb(255, 255, 255);
 }
 
 @media (max-width: 575.98px){

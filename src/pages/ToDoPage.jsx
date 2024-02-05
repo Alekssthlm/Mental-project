@@ -1,10 +1,12 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import ToDoItem from "../components/ToDoItem";
 import useLocalStorage from "../hooks/useLocalStorage";
+import { ThemeContext } from "./SiteWrap";
 
 export default function ToDoPage() {
   const [newTodo, setNewTodo] = useState("");
   const [todoList, setTodoList] = useLocalStorage('TODOS', [])
+  const {isDarkMode} = useContext(ThemeContext)
 
   function handleAddTodo(){
     if(newTodo === '') return
@@ -38,7 +40,7 @@ export default function ToDoPage() {
   return (
     <div className="task-wrap">
       <div className="input-bar">
-        <input className="input-field" type="text" placeholder="New task" value={newTodo} onChange={(e) => setNewTodo(e.target.value)} onKeyDown={(e) => e.key === 'Enter' && handleAddTodo()}/>
+        <input className={isDarkMode ? "input-field" : "input-field input-field-light"} type="text" placeholder="New task" value={newTodo} onChange={(e) => setNewTodo(e.target.value)} onKeyDown={(e) => e.key === 'Enter' && handleAddTodo()}/>
         <button className="add-todo-btn" onClick={handleAddTodo}>ADD TASK</button>
       </div>
 
