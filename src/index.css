@@ -107,6 +107,12 @@ ul{
   gap: 1vh;
 }
 
+@media (max-width: 575.98px){
+  .app-wrap{
+    width: 95vmin;
+  }
+}
+
 .menu-btn{
   font-size: 1.5rem;
   position: relative;
@@ -337,6 +343,7 @@ ul{
   border-radius: 25px;
   color: white;
   backdrop-filter: blur(5px);
+  align-items: center;
 }
 
 .todo-wrap-light{
@@ -346,13 +353,16 @@ ul{
 
 @media (max-width: 575.98px){
   .todo-wrap{
-    padding: 0.2rem 0.2rem 0.2rem 1rem;
+    padding: 0.3rem 0.8rem 0.3rem 1rem;
   }
 }
 
 .todo-label-wrap{
   flex: 1;
   min-height: 1.8rem;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
 }
 
 .todo-item {
@@ -368,7 +378,7 @@ ul{
   width: 3rem;
   border-color: red;
   color: red;
-  background: #ebfffc;
+  background: none;
   border-radius: 5px;
   align-self: flex-start;
 }
@@ -389,8 +399,15 @@ ul{
 
 @media (max-width: 575.98px){
   .calendar-wrap{
+    align-items: center;
     flex-direction: column;
     gap: 0;
+  }
+}
+
+@media (max-width: 575.98px){
+  #calendar{
+    width: 100%;
   }
 }
 
@@ -405,12 +422,12 @@ ul{
   flex: 1;
   height: 100%;
   overflow-y: auto;
-
 }
 
 @media (max-width: 575.98px){
   .calendar-events{
-    padding: 0;
+    width: 100%;
+    padding: 1rem;
   }
 }
 
@@ -421,10 +438,6 @@ ul{
   height: 100%;
   overflow-y: auto;
 }
-
-/* .calendar-title{
-
-} */
 
 @media (max-width: 575.98px){
   .calendar-title{
