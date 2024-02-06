@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import useWeatherData from "../hooks/useWeatherData.js";
 
 import clearday_icon from "../assets/clearday.png";
 import clearnight_icon from "../assets/clearnight.png";
@@ -13,8 +14,11 @@ import rain_icon from "../assets/rain.png";
 import snow_icon from "../assets/snow.png";
 import thunderstorm_icon from "../assets/thunderstorm.png";
 
-export default function TopWeather({ weatherData }) {
+export default function TopWeather() {
     const [wicon, setWicon] = useState(clearnight_icon);
+    const [temperature, setTemperature] = useState(null);
+    const { weatherData } = useWeatherData();
+    
 
     const iconMapping = {
         "01d": clearday_icon,
@@ -36,39 +40,20 @@ export default function TopWeather({ weatherData }) {
       };
 
       useEffect(() => {
-        const weatherIcon = weatherData?.weather[0].icon;
-        const selectedIcon = iconMapping[weatherIcon] || iconMapping.default;
-    
-        setWicon(selectedIcon);
-      }, [weatherData?.weather]);
-
-      const [temperature, setTemperature] = useState(null);
-
-      useEffect(() => {
-        // Update the temperature initially
         if (weatherData && weatherData.main) {
-          setTemperature(Math.round(weatherData.main.temp));
+          const { main, weather } = weatherData;
+          const weatherIcon = weather[0].icon;
+          const selectedIcon = iconMapping[weatherIcon] || iconMapping.default;
+    
+          setTemperature(Math.round(main.temp));
+          setWicon(selectedIcon);
         }
-    
-        // Set up an interval to periodically update the temperature
-        const intervalId = setInterval(() => {
-          if (weatherData && weatherData.main) {
-            setTemperature(Math.round(weatherData.main.temp));
-          }
-        }, 1000); // 5 minutes in milliseconds
-    
-        // Clean up the interval on component unmount
-        return () => clearInterval(intervalId);
       }, [weatherData]);
 
     return (
         <>
-          {weatherData && weatherData.main && (
-            <>
               <img className="header-weather-icon" src={wicon} alt="" />
               <div className="temperature">{temperature} &deg;C</div>
-            </>
-          )}
         </>
       );
 }
