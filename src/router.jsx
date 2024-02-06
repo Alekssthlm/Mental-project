@@ -15,7 +15,7 @@ export const router = createBrowserRouter([
       { path: "/weather", element: <WeatherPage /> },
       { path: "/calendar", element: <CalendarPage /> },
       { path: "/unit-converter", element: <UnitConverterPage /> },
-      { path: "*", element: <Navigate to="/" /> }
+      { path: "/*", element: <Navigate to="/" /> }
     ],
   },
 ]);
