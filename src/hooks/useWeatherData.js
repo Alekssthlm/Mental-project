@@ -9,16 +9,6 @@ const useWeatherData = () => {
 
   const fetchLocation = async () => {
     try {
-      // Check if cached location is available
-      const cachedLat = localStorage.getItem("cachedLat");
-      const cachedLong = localStorage.getItem("cachedLong");
-
-      if (cachedLat && cachedLong) {
-        setLat(cachedLat);
-        setLong(cachedLong);
-        return;
-      }
-
       const position = await new Promise((resolve, reject) => {
         navigator.geolocation.getCurrentPosition(resolve, reject);
       });
@@ -26,10 +16,6 @@ const useWeatherData = () => {
       const { latitude, longitude } = position.coords;
       setLat(latitude);
       setLong(longitude);
-
-      // Cache location
-      localStorage.setItem("cachedLat", latitude);
-      localStorage.setItem("cachedLong", longitude);
     } catch (error) {
       console.log(error);
     }
@@ -82,7 +68,7 @@ const useWeatherData = () => {
     }
   }, [lat, long, lastFetchTime]);
 
-  return { weatherData, setWeatherData, fetchWeatherData, fetchLocation };
+  return { weatherData, fetchWeatherData, fetchLocation, lat, long };
 };
 
 export default useWeatherData;
