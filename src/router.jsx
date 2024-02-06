@@ -1,4 +1,4 @@
-import { createBrowserRouter } from "react-router-dom";
+import { Navigate, createBrowserRouter } from "react-router-dom";
 import Welcome from "./pages/Welcome";
 import ToDoPage from "./pages/ToDoPage";
 import WeatherPage from "./pages/WeatherPage";
@@ -14,7 +14,8 @@ export const router = createBrowserRouter([
       { path: "/task-manager", element: <ToDoPage /> },
       { path: "/weather", element: <WeatherPage /> },
       { path: "/calendar", element: <CalendarPage /> },
-      { path: "/unit-converter", element: <UnitConverterPage /> }
+      { path: "/unit-converter", element: <UnitConverterPage /> },
+      { path: "*", element: <Navigate to="/" /> }
     ],
   },
 ]);
