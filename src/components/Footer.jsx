@@ -12,16 +12,16 @@ const Footer = () => {
   useEffect(() => {
     async function loadQuotes() {
       const response = await fetch("https://type.fit/api/quotes");
-      const quotes = await response.json();
-      setQuotes(quotes.slice(0, 15));
-      const select = quotes[Math.floor(Math.random() * quotes.length)];
+      const quotesArr = await response.json();
+      setQuotes(quotesArr.slice(0, 15));
+      const select = quotesArr[Math.floor(Math.random() * quotesArr.length)];
       setQuote(select);
     }
 
     loadQuotes();
   }, []);
 
-  const random = () => {
+  function random() {
     const select = quotes[Math.floor(Math.random() * quotes.length)];
     setQuote(select);
   };
