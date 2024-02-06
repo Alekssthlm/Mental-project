@@ -21,7 +21,7 @@ import sunrise_icon from "../assets/sunrise.png";
 import sunset_icon from "../assets/sunset.png";
 
 export default function WeatherPage() {
-  const { weatherData, fetchWeatherData, updateLocation, setWeatherData } = useWeatherData();
+  const { weatherData, fetchWeatherData, updateLocation } = useWeatherData();
   const [wicon, setWicon] = useState(clearnight_icon);
 
   const formatTime = (timestamp) => {
