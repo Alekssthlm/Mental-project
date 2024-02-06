@@ -1,8 +1,5 @@
 import React, { useState, useEffect } from "react";
 import "./RandomQuote.css";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faGratipay } from "@fortawesome/free-brands-svg-icons";
-import { faL } from "@fortawesome/free-solid-svg-icons";
 
 const Footer = () => {
   const [quote, setQuote] = useState({
@@ -33,15 +30,9 @@ const Footer = () => {
     <div className="container" onMouseOver={()=>{setHoverEffect(true)}} onMouseLeave={()=>{setHoverEffect(false)}}>
       <div className={hoverEffect ? "quote-show" : "quote-show quote-hide" }>"{quote.text}"</div>
       <div>
-        {/* <div className="line"></div> */}
         <div className={hoverEffect ? "bottom-show" : "bottom-show bottom-hide" }>
           <div className="author">- {quote.author.split(",")[0]}</div>
           <div className="icons">
-            {/* <FontAwesomeIcon
-              icon={faGratipay}
-              onClick={random}
-              className="pointer-cursor"
-            /> */}
             <i className="fa-solid fa-arrows-rotate" onClick={random}></i>
           </div>
         </div>
