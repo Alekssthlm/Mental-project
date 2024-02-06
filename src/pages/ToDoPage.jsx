@@ -45,7 +45,7 @@ export default function ToDoPage() {
       </div>
 
       <ul className="todo-list">
-        {todoList.length === 0 ? <p style={{color: "#fff"}}>All tasks cleared</p> : 
+        {todoList.length === 0 ? <p style={isDarkMode ? {color: "#fff"} : {color: "#000", textShadow:"1px 1px 10px rgba(0, 0, 0, 0.424)"}}>All tasks cleared</p> : 
         todoList.map(todo =>{
           return <ToDoItem todo={todo.text} id={todo.id} key={todo.id} checked={todo.checked} toggleTodo={toggleTodo} onDelete={handleDeleteTodo}/>
         })
