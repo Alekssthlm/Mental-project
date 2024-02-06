@@ -21,7 +21,7 @@ import sunrise_icon from "../assets/sunrise.png";
 import sunset_icon from "../assets/sunset.png";
 
 export default function WeatherPage() {
-  const { weatherData, fetchWeatherData, updateLocation, setWeatherData } = useWeatherData();
+  const { weatherData, fetchWeatherData, fetchLocation, lat, long } = useWeatherData();
   const [wicon, setWicon] = useState(clearnight_icon);
 
   const formatTime = (timestamp) => {
@@ -71,7 +71,9 @@ export default function WeatherPage() {
   };
 
   const handleCurrentLocation = () => {
-    updateLocation();
+    fetchLocation();
+    const newApiURL = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&units=metric&appid=${apiKeys.weather}`;
+    fetchWeatherData(newApiURL);
   };
 
   if (!weatherData) {
