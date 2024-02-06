@@ -2,8 +2,8 @@ import { createContext, useState } from "react";
 import Navbar from "../components/Navbar";
 import AppContainer from "../components/AppContainer";
 import CurrentDate from "../components/CurrentDate";
-import useWeatherData from "../hooks/useWeatherData.js";
 import Footer from "../components/Footer";
+import TopWeather from "../components/TopWeather";
 import clearday_icon from "../assets/clearday.png";
 import useLocalStorage from "../hooks/useLocalStorage.js";
 import useTime from "../hooks/useTime.js";
@@ -67,18 +67,7 @@ export default function SiteWrap() {
           <div>{time}</div>
           <CurrentDate />
           <div className="header-weather">
-            {weatherData && weatherData.main && (
-              <>
-                <img
-                  className="header-weather-icon"
-                  src={clearday_icon}
-                  alt=""
-                />
-                <div className="temperature">
-                  {Math.round(weatherData.main.temp)} &deg;C
-                </div>
-              </>
-            )}
+                    <TopWeather />
           </div>
           </div>
         </header>

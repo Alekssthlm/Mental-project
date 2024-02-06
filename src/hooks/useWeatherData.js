@@ -9,6 +9,16 @@ const useWeatherData = () => {
 
   const fetchLocation = async () => {
     try {
+      // Check if cached location is available
+      const cachedLat = localStorage.getItem("cachedLat");
+      const cachedLong = localStorage.getItem("cachedLong");
+
+      if (cachedLat && cachedLong) {
+        setLat(cachedLat);
+        setLong(cachedLong);
+        return;
+      }
+
       const position = await new Promise((resolve, reject) => {
         navigator.geolocation.getCurrentPosition(resolve, reject);
       });
@@ -16,12 +26,12 @@ const useWeatherData = () => {
       const { latitude, longitude } = position.coords;
       setLat(latitude);
       setLong(longitude);
+
+      // Cache location
+      localStorage.setItem("cachedLat", latitude);
+      localStorage.setItem("cachedLong", longitude);
     } catch (error) {
-      // Gives default coordinates to New York
-      const latitude = "40.7166638";
-      const longitude = "-74.0";
-      setLat(latitude);
-      setLong(longitude);
+      console.log(error);
     }
   };
 
@@ -36,14 +46,12 @@ const useWeatherData = () => {
       const result = await response.json();
       setWeatherData(result);
       setLastFetchTime(Date.now());
+
+      // Cache weather data
+      localStorage.setItem("cachedWeatherData", JSON.stringify(result));
     } catch (error) {
       console.error("Error fetching data: ", error);
     }
-  };
-
-  const updateLocation = () => {
-    const apiURL = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&units=metric&appid=${apiKeys.weather}`;
-    fetchWeatherData(apiURL);
   };
 
   useEffect(() => {
@@ -53,10 +61,19 @@ const useWeatherData = () => {
   useEffect(() => {
     // Check if both lat and long have values
     if (lat !== null && long !== null) {
-      // Check if it's time to make a new API call (e.g. 1 second)
+      // Check if cached weather data is available
+      const cachedWeatherData = localStorage.getItem("cachedWeatherData");
+
+      if (cachedWeatherData) {
+        // Parse and set cached weather data
+        setWeatherData(JSON.parse(cachedWeatherData));
+        return;
+      }
+
+      // Check if it's time to make a new API call (e.g., 5 minutes)
       const shouldFetchData =
-        !lastFetchTime || Date.now() - lastFetchTime >= 1000;
-  
+        !lastFetchTime || Date.now() - lastFetchTime >= 5 * 60 * 1000;
+
       if (shouldFetchData) {
         fetchWeatherData(
           `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&units=metric&appid=${apiKeys.weather}`
@@ -65,7 +82,7 @@ const useWeatherData = () => {
     }
   }, [lat, long, lastFetchTime]);
 
-  return { weatherData, setWeatherData, fetchWeatherData, updateLocation };
+  return { weatherData, setWeatherData, fetchWeatherData, fetchLocation };
 };
 
 export default useWeatherData;
