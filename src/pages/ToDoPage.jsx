@@ -1,10 +1,12 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import ToDoItem from "../components/ToDoItem";
 import useLocalStorage from "../hooks/useLocalStorage";
+import { ThemeContext } from "./SiteWrap";
 
 export default function ToDoPage() {
   const [newTodo, setNewTodo] = useState("");
   const [todoList, setTodoList] = useLocalStorage('TODOS', [])
+  const {isDarkMode} = useContext(ThemeContext)
 
   function handleAddTodo(){
     if(newTodo === '') return
@@ -36,14 +38,14 @@ export default function ToDoPage() {
   }
 
   return (
-    <div>
+    <div className="task-wrap">
       <div className="input-bar">
-        <input className="input-field" type="text" value={newTodo} onChange={(e) => setNewTodo(e.target.value)}/>
-        <button className="add-todo-btn" onClick={handleAddTodo}>ADD TODO</button>
+        <input className={isDarkMode ? "input-field" : "input-field input-field-light"} type="text" placeholder="New task" value={newTodo} onChange={(e) => setNewTodo(e.target.value)} onKeyDown={(e) => e.key === 'Enter' && handleAddTodo()}/>
+        <button className="add-todo-btn" onClick={handleAddTodo}>ADD TASK</button>
       </div>
 
       <ul className="todo-list">
-        {todoList.length === 0 ? <p>No todos</p> : 
+        {todoList.length === 0 ? <p style={{color: "#fff"}}>All tasks cleared</p> : 
         todoList.map(todo =>{
           return <ToDoItem todo={todo.text} id={todo.id} key={todo.id} checked={todo.checked} toggleTodo={toggleTodo} onDelete={handleDeleteTodo}/>
         })

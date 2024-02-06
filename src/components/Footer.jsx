@@ -1,21 +1,19 @@
 import React, { useState, useEffect } from "react";
 import "./RandomQuote.css";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faGratipay } from "@fortawesome/free-brands-svg-icons";
 
 const Footer = () => {
   const [quote, setQuote] = useState({
     text: "Difficulties increase the nearer we get to the goal.",
     author: "Johann Wolfgang von Goethe",
   });
-
+  const [hoverEffect, setHoverEffect] = useState(false)
   const [quotes, setQuotes] = useState([]);
 
   useEffect(() => {
     async function loadQuotes() {
       const response = await fetch("https://type.fit/api/quotes");
       const quotes = await response.json();
-      setQuotes(quotes);
+      setQuotes(quotes.slice(0, 15));
       const select = quotes[Math.floor(Math.random() * quotes.length)];
       setQuote(select);
     }
@@ -29,18 +27,13 @@ const Footer = () => {
   };
 
   return (
-    <div className="container">
-      <div className="quote">{quote.text}</div>
+    <div className="container" onMouseOver={()=>{setHoverEffect(true)}} onMouseLeave={()=>{setHoverEffect(false)}}>
+      <div className={hoverEffect ? "quote-show" : "quote-show quote-hide" }>"{quote.text}"</div>
       <div>
-        <div className="line"></div>
-        <div className="bottom">
+        <div className={hoverEffect ? "bottom-show" : "bottom-show bottom-hide" }>
           <div className="author">- {quote.author.split(",")[0]}</div>
           <div className="icons">
-            <FontAwesomeIcon
-              icon={faGratipay}
-              onClick={random}
-              className="pointer-cursor"
-            />
+            <i className="fa-solid fa-arrows-rotate" onClick={random}></i>
           </div>
         </div>
       </div>
