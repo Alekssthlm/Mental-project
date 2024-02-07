@@ -17,17 +17,19 @@ import snow_icon from "../assets/snow.png";
 import thunderstorm_icon from "../assets/thunderstorm.png";
 import sunrise_icon from "../assets/sunrise.png";
 import sunset_icon from "../assets/sunset.png";
+import dagtid_background from "../assets/dagtid.jpg";
 
-export default function Weather({ weatherData, fetchWeatherData, updateLocation }) {
+const Weather = ({ weatherData, fetchWeatherData, updateLocation }) => {
   const [wicon, setWicon] = useState(clearnight_icon);
+  const [background, setBackground] = useState(clearnight_icon);
 
   const formatTime = (timestamp) => {
     const dateObj = new Date(timestamp * 1000);
-    const hours = dateObj.getUTCHours().toString().padStart(2, '0');
-    const minutes = dateObj.getUTCMinutes().toString().padStart(2, '0');
+    const hours = dateObj.getUTCHours().toString().padStart(2, "0");
+    const minutes = dateObj.getUTCMinutes().toString().padStart(2, "0");
     return `${hours}:${minutes}`;
   };
-  
+
   let sunriseFormatted = formatTime(weatherData.sys.sunrise);
   let sunsetFormatted = formatTime(weatherData.sys.sunset);
 
@@ -55,6 +57,16 @@ export default function Weather({ weatherData, fetchWeatherData, updateLocation 
     const selectedIcon = iconMapping[weatherIcon] || iconMapping.default;
 
     setWicon(selectedIcon);
+
+    const currentDate = new Date();
+    const currentHour = currentDate.getHours();
+
+    // Om klockan är mellan 06:00 och 18:00, använd dagens bild, annars använd kvällsbild.
+    if (currentHour >= 6 && currentHour < 23) {
+      setBackground(dagtid_background); // Använd sökvägen för dagtid.jpg.
+    } else {
+      setBackground(clearnight_icon); // Default: använd clearnight_icon vid kväll och natt.
+    }
   }, [weatherData.weather]);
 
   const handleSearch = () => {
@@ -64,7 +76,7 @@ export default function Weather({ weatherData, fetchWeatherData, updateLocation 
       const newApiURL = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${apiKeys.weather}`;
       fetchWeatherData(newApiURL);
       cityInput.value = "";
-    }   
+    }
   };
 
   const handleCurrentLocation = () => {
@@ -72,9 +84,16 @@ export default function Weather({ weatherData, fetchWeatherData, updateLocation 
   };
 
   return (
-    <div className="weather-container">
+    <div
+      className="weather-container"
+      style={{ backgroundImage: `url(${background})`, backgroundSize: "cover" }}
+    >
       <div className="top-bar">
-      <button className="currentlocation-icon" onClick={handleCurrentLocation} title="Get your current locations weather">
+        <button
+          className="currentlocation-icon"
+          onClick={handleCurrentLocation}
+          title="Get your current locations weather"
+        >
           <img src={currentlocation_icon} alt="" />
         </button>
         <input type="text" className="cityInput" placeholder="Search" />
@@ -107,4 +126,6 @@ export default function Weather({ weatherData, fetchWeatherData, updateLocation 
       </div>
     </div>
   );
-}
+};
+
+export default Weather;
